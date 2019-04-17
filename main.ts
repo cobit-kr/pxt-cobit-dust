@@ -12,11 +12,11 @@ namespace cobit_dust {
     export function readDustsensor(): number {
         let value = 0
         pins.digitalWritePin(DigitalPin.P2, 0)
-        basic.pause(280)
+        control.waitMicros(280)
         value = pins.analogReadPin(AnalogPin.P1)
-        basic.pause(40)
+        control.waitMicros(40)
         pins.digitalWritePin(DigitalPin.P2, 1)
-        basic.pause(9680)
+        control.waitMicros(9680)
         value = value * (5 / 1024)
         return value
     }
